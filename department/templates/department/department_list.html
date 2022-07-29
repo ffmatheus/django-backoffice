@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<form method="GET">
+    <input type="text" name="name" placeholder="Search by name"/>
+    <input type="submit" value="Search">
+</form>
+<table>
+    <thread>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thread>
+    <tbody>
+    {% for department in object_list %}
+    <tr>   
+        <td>{{ department.name}}</td>
+        <td>
+            <a href="{% url 'department.update' department.pk %}">Update</a>
+            <a href="{% url 'department.delete' department.pk %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>   
+</table>
+
+<ul>
+    <li><a href="{% url 'department.create' %}">New department</a></li>
+</ul>
+
+{% endblock content %}

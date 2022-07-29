@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<form method="GET">
+    <input type="text" name="name" placeholder="Search by name"/>
+    <input type="submit" value="Search">
+</form>
+<table>
+    <thread>
+        <tr>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thread>
+    <tbody>
+    {% for employee in object_list %}
+    <tr>   
+        <td>{{ employee.name}}</td>
+        <td>{{ employee.email}}</td>
+        <td>{{ employee.department.name}}</td>
+        <td>
+            <a href="{% url 'employee.update' employee.pk %}">Update</a>
+            <a href="{% url 'employee.delete' employee.pk %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>   
+</table>
+
+<ul>
+    <li><a href="{% url 'employee.create' %}">New employee</a></li>
+</ul>
+
+{% endblock content %}
