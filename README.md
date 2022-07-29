@@ -1,4 +1,4 @@
-# {{ project_name|title }}
+# Backoffice
 
 # Manage departament and employees data
 
