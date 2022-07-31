@@ -1,4 +1,4 @@
-# Backoffice
+# Backoffice - IGS 🚀
 
 # Manage departament and employees data
 
@@ -6,14 +6,14 @@
 
 First clone the repository from Github and switch to the new directory:
 
-    $ git clone git@github.com/USERNAME/{{ project_name }}.git
-    $ cd {{ project_name }}
+    $ git clone https://github.com/ffmatheus/django-backoffice.git
+    $ cd django-backoffice
     
 Activate the virtualenv for your project.
     
 Install project dependencies:
 
-    $ pip install -r requirements/local.txt
+    $ pip install -r requirements.txt
     
     
 Then simply apply the migrations:
@@ -24,3 +24,9 @@ Then simply apply the migrations:
 You can now run the development server:
 
     $ python manage.py runserver
+
+To access the admin and api's, you'll need to create a user:
+
+    $ python manage.py createsuperuser
+
+Enjoy ! 
