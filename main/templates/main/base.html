@@ -1,18 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employees Management</title>
-</head>
-<body>
-    <ul>
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'employee.index' %}">Employees</a></li>
-        <li><a href="{% url 'department.index' %}">Departments</a></li>
-    </ul>
-    {% block content %}
-    {% endblock content %}
+    <p><img alt="" src="https://www.igs-software.com.br/img/logo.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" /></p>
+
+    <p>&nbsp;</p>
+    
+    <p style="text-align:center">&nbsp;</p>
+    {% block content1 %}
+    <p style="text-align:center"><span style="font-family:sans-serif"><span style="color:#9b59b6"><strong><span style="font-size:48px">Home</span></strong></span></span></p>
+    {% endblock content1 %}
+    <hr />
+    <p>&nbsp;</p>
+    
+    <p>&nbsp;</p>
+    {% block content2 %}
+
+    <p style="text-align:center">
+        <a href="{% url 'admin:index' %}">
+            <button>Admin</button>
+        </a>
+    </p>
+
+    <p style="text-align:center">
+        <a href="{% url 'api:api-root' %}">
+            <button>API</button>
+        </a>
+    </p>
+        
+    <p style="text-align:center">
+        <a href="{% url 'employee.index' %}">
+            <button>Employees List</button>
+        </a>
+    </p>
+ 
+    {% endblock content2 %}
 </body>
+
+<style>
+
+    body {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        background: linear-gradient(45deg, #49a09d, #5f2c82);
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+
+    button {
+        color: #ffffff;
+        background-color: #9b59b6;
+        font-size: 19px;
+        border: 1px solid #2d63c8;
+        padding: 15px 100px;
+        cursor: pointer
+    }
+    button:hover {
+        color: #2d63c8;
+        background-color: #ffffff;
+    }
+
+</style>
+
 </html>

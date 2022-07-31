@@ -1,35 +1,107 @@
 {% extends 'main/base.html' %}
-{% block content %}
-<form method="GET">
-    <input type="text" name="name" placeholder="Search by name"/>
-    <input type="submit" value="Search">
-</form>
-<table>
-    <thread>
-        <tr>
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Department</th>
-            <th>Actions</th>
-        </tr>
-    </thread>
-    <tbody>
-    {% for employee in object_list %}
-    <tr>   
-        <td>{{ employee.name}}</td>
-        <td>{{ employee.email}}</td>
-        <td>{{ employee.department.name}}</td>
-        <td>
-            <a href="{% url 'employee.update' employee.pk %}">Update</a>
-            <a href="{% url 'employee.delete' employee.pk %}">Delete</a>
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>   
-</table>
 
-<ul>
-    <li><a href="{% url 'employee.create' %}">New employee</a></li>
-</ul>
+{% block content1 %}
+    <p style="text-align:center"><span style="font-family:sans-serif"><span style="color:#9b59b6"><strong><span style="font-size:48px">Employees List</span></strong></span></span></p>
+{% endblock content1 %}
 
-{% endblock content %}
+{% block content2 %}
+    <table align="center" border="1" cellpadding="1" cellspacing="1" style="width:826px">
+        <tbody>
+            <tr>
+                <td style="background-color:#9b59b6; text-align:center; width:77px"><span style="color:#ffffff"><strong>Id</strong></span></td>
+                <td style="background-color:#9b59b6; text-align:center; width:220px"><span style="color:#ffffff"><strong>Name</strong></span></td>
+                <td style="background-color:#9b59b6; text-align:center; width:350px"><span style="color:#ffffff"><strong>E-mail</strong></span></td>
+                <td style="background-color:#9b59b6; text-align:center; width:154px"><span style="color:#ffffff"><strong>Department</strong></span></td>
+            </tr>
+        
+            {% for employee in object_list %}
+            <tr>
+                <td>{{ employee.id}}</td>  
+                <td>{{ employee.name}}</td>
+                <td>{{ employee.email}}</td>
+                <td>{{ employee.department.name}}</td>
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+    
+    <p style="text-align:center">
+    <a href="{% url 'home' %}">
+        <button>Home</button>
+     </a>
+    </p>
+
+    <style>
+        .container {
+            align: center;
+            border: 1;
+            cellpadding: 1; 
+            cellspacing: 1;
+            width: 826px;
+        }
+
+        table {
+            width: 800px;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        thead {
+            th {
+                background-color: #55608f;
+            }
+        }
+
+        tbody {
+            tr {
+                &:hover {
+                    background-color: rgba(255,255,255,0.3);
+                }
+            }
+            td {
+                position: relative;
+                &:hover {
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: -9999px;
+                        bottom: -9999px;
+                        background-color: rgba(255,255,255,0.2);
+                        z-index: -1;
+                    }
+                }
+            }
+        }
+
+        button {
+			color: #ffffff;
+			background-color: #9b59b6;
+			font-size: 19px;
+			border: 1px solid #2d63c8;
+			padding: 15px 50px;
+			cursor: pointer
+		}
+		button:hover {
+			color: #2d63c8;
+			background-color: #ffffff;
+		}
+        
+    </style>
+{% endblock content2 %}
