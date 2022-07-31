@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Department
 from .forms import DepartmentForm
@@ -7,6 +8,7 @@ from .serializer import DepartmentSerializer
 
 
 class DepartmentViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
     queryset = Department.objects.all().order_by('name')
     serializer_class = DepartmentSerializer
 
