@@ -1,7 +1,15 @@
 from django.shortcuts import render
+from rest_framework import viewsets
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Employee
 from .forms import EmployeeForm
+from .serializer import EmployeeSerializer
+
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all().order_by('name')
+    serializer_class = EmployeeSerializer
+
 
 class ListEmployeeView(ListView):
     model = Employee

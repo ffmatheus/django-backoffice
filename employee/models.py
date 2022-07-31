@@ -4,6 +4,7 @@ from django.core.validators import validate_email
 
 
 class Employee(models.Model):
+    id = models.IntegerField
     name = models.CharField(max_length=256)
     email = models.CharField(validators=[validate_email] ,max_length=256)
     department = models.ForeignKey(Department, null=True, on_delete=models.SET_NULL)

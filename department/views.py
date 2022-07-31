@@ -1,7 +1,15 @@
 from django.shortcuts import render
+from rest_framework import viewsets
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Department
 from .forms import DepartmentForm
+from .serializer import DepartmentSerializer
+
+
+class DepartmentViewSet(viewsets.ModelViewSet):
+    queryset = Department.objects.all().order_by('name')
+    serializer_class = DepartmentSerializer
+
 
 class ListDepartmentView(ListView):
     model = Department
